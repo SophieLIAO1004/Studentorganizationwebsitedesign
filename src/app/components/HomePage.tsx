@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { ChevronUp, Instagram, Facebook, Mail, Calendar, Menu, X } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { activities } from '../data/activities';
+import { images } from '../data/images';
 
 type Language = 'zh' | 'jp';
 
@@ -41,9 +42,9 @@ const translations: Record<Language, Translation> = {
       cta: '加入我們'
     },
     about: {
-      title: '關於我們',
-      mission: '台日學生交流協會（台北分會）致力於促進台灣與日本學生之間的文化交流與相互理解。透過定期舉辦各種活動，我們為兩國學生搭建友誼的橋樑，創造難忘的跨文化體驗。',
-      vision: '我們相信，青年之間的交流是促進兩國友好關係的石。期��與你一起，開啟精彩的台日交流之旅。',
+      title: '關於台日',
+      mission: '我們是台大的跨校性社團「台灣日本學生交流會」！透過定期舉辦語言交換等交流活動，搭建兩國學生友誼的橋樑，並在提升語言能力的同時，培養國際視野，創造難忘的跨文化經驗。',
+      vision: '歡迎對台日交流有興趣的同學來參加我們的活動！',
       followUs: '追蹤我們'
     },
     activities: {
@@ -62,9 +63,9 @@ const translations: Record<Language, Translation> = {
       cta: '参加する'
     },
     about: {
-      title: '私たちについて',
-      mission: '台日学生交流協会（台北支部）は、台湾と日本の学生間の文化交流と相互理解を促進することに力を注いでいます。定期的に様々なイベントを開催し、両国の学生が友情の橋を築き、忘れられない異文化体験を創り出します。',
-      vision: '若者同士の交流は、両国の友好関係を促進する重要な基盤であると信じています。一緒に素晴らしい台日交流の旅を始めましょう。',
+      title: '台日について',
+      mission: '私たちは、台湾大学を拠点とするインカレサークル「台湾日本学生交流会」です。定期的に言語交換をはじめとする交流イベントを開催し、台湾と日本の学生の友情をつなぐ架け橋となることを目指しています。言語能力の向上だけでなく、国際的な視野を広げ、忘れられない異文化交流の経験を創出しています。',
+      vision: '台湾と日本の交流に興味のある方、ぜひお気軽にご参加ください！',
       followUs: 'フォローする'
     },
     activities: {
@@ -82,7 +83,60 @@ interface HomePageProps {
 export function HomePage({ language, setLanguage }: HomePageProps) {
   const navigate = useNavigate();
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [titleFontSize, setTitleFontSize] = useState(60);
   const t = translations[language];
+
+  // Calculate optimal font size for title to fit in one line
+  useEffect(() => {
+    const calculateFontSize = () => {
+      const container = document.getElementById('hero-title-container');
+      if (!container) return;
+
+      const containerWidth = container.offsetWidth;
+      const text = language === 'zh' ? '台灣日本學生交流會' : '台湾日本学生交流会';
+      
+      // Create a temporary element to measure text width
+      const tempElement = document.createElement('span');
+      tempElement.style.fontFamily = "'Swei Spring CJK TC', serif";
+      tempElement.style.fontWeight = '600';
+      tempElement.style.visibility = 'hidden';
+      tempElement.style.position = 'absolute';
+      tempElement.style.whiteSpace = 'nowrap';
+      tempElement.textContent = text;
+      document.body.appendChild(tempElement);
+
+      // Binary search for the largest font size that fits
+      let minSize = 20;
+      let maxSize = window.innerWidth >= 768 ? 60 : 60;
+      let optimalSize = maxSize;
+
+      for (let i = 0; i < 10; i++) {
+        const testSize = (minSize + maxSize) / 2;
+        tempElement.style.fontSize = `${testSize}px`;
+        const textWidth = tempElement.offsetWidth;
+
+        if (textWidth <= containerWidth - 20) { // 20px padding for safety
+          minSize = testSize;
+          optimalSize = testSize;
+        } else {
+          maxSize = testSize;
+        }
+      }
+
+      document.body.removeChild(tempElement);
+      
+      // On desktop, keep 60px max
+      if (window.innerWidth >= 768) {
+        setTitleFontSize(60);
+      } else {
+        setTitleFontSize(Math.floor(optimalSize));
+      }
+    };
+
+    calculateFontSize();
+    window.addEventListener('resize', calculateFontSize);
+    return () => window.removeEventListener('resize', calculateFontSize);
+  }, [language]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -145,7 +199,7 @@ export function HomePage({ language, setLanguage }: HomePageProps) {
             onClick={() => scrollToTop()}
           >
             <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--rose-pink)' }}>
-              <img src="/src/imports/images-1.png" alt="TJSEA Logo" className="w-full h-full object-cover" />
+              <img src={images.logo} alt="TJSEA Logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-medium" style={{ color: 'var(--dark-text)' }}>TJSC</span>
           </motion.div>
@@ -228,6 +282,7 @@ export function HomePage({ language, setLanguage }: HomePageProps) {
       <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6" style={{ backgroundColor: 'var(--warm-cream)' }}>
         <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center">
           <motion.div
+            id="hero-title-container"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -236,13 +291,13 @@ export function HomePage({ language, setLanguage }: HomePageProps) {
               className="mb-6"
               style={{
                 fontFamily: "'Swei Spring CJK TC', serif",
-                fontSize: 'clamp(1.75rem, 8vw, 65px)',
+                fontSize: `${titleFontSize}px`,
                 lineHeight: '1.2',
                 color: 'var(--dark-text)',
                 fontWeight: 600
               }}
             >
-              {language === 'zh' ? '台灣日本學生交流會' : '台日学生交流協会'}
+              {language === 'zh' ? '台灣日本學生交流會' : '台湾日本学生交流会'}
             </motion.h1>
             <motion.p
               className="mb-2 opacity-60"
@@ -281,7 +336,7 @@ export function HomePage({ language, setLanguage }: HomePageProps) {
           >
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <ImageWithFallback
-                src="/src/imports/LINE_ALBUM_2026315_新歓活動！_260414_1-1.jpg"
+                src={images.welcome.event1}
                 alt="Cultural exchange"
                 className="w-full h-full object-cover object-center"
               />

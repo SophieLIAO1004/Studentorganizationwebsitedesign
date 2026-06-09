@@ -1,11 +1,13 @@
+import { images } from './images';
+
 export interface Activity {
   id: string;
   title: { zh: string; jp: string };
   date: string;
   category: { zh: string; jp: string };
   description: { zh: string; jp: string };
-  coverImage: string;
-  gallery: string[];
+  coverImage: string | any;
+  gallery: (string | any)[];
 }
 
 export const activities: Activity[] = [
@@ -15,77 +17,58 @@ export const activities: Activity[] = [
     date: '2024-03-15',
     category: { zh: '文化交流', jp: '文化交流' },
     description: {
-      zh: '一年一度的新生歡迎活動，透過各種有趣的遊戲和活動，讓台灣和日本的學生們互相認識，建立友誼的橋樑。活動包含自我介紹、破冰遊戲、文化體驗工作坊，以及溫馨的聯誼晚餐。大家在輕鬆愉快的氛圍中交流，分享彼此的文化和經驗。',
-      jp: '年に一度の新入生歓迎イベントでは、様々な楽しいゲームやアクティビティを通じて、台湾と日本の学生が互いに知り合い、友情の架け橋を築きました。自己紹介、アイスブレイクゲーム、文化体験ワークショップ、そして温かい交流ディナーが含まれていました。皆さんはリラックスした雰囲気の中で交流し、それぞれの文化や経験を共有しました。'
+      zh: '迎新是本社每學期初舉辦的第一個大型活動,透過分組互動讓新舊社員快速熟悉彼此。活動形式多元,曾舉辦分組BBQ結合團康競賽,或在台北市內進行小旅行並完成解謎任務。在輕鬆愉快的氛圍中,促進交流並建立連結。',
+      jp: '新歓は毎学期の初めに開催される最初の大型イベントで、新旧メンバーがグループに分かれて交流を深めます。これまでに、グループごとのBBQやレクリエーション大会、台北市内でのミニ旅行と謎解き活動などを実施してきました。リラックスした雰囲気の中で、自然に交流を広げることができます。'
     },
-    coverImage: '/src/imports/LINE_ALBUM_2026315_新歓活動！_260415_1-2.jpg',
+    coverImage: images.welcome.bbq,
     gallery: [
-      '/src/imports/LINE_ALBUM_114-1_迎新BBQ114-1_歓迎会BBQ_260416_2.jpg',
-      '/src/imports/LINE_ALBUM_114-1_迎新BBQ114-1_歓迎会BBQ_260416_5.jpg',
-      '/src/imports/LINE_ALBUM_2024105_迎新_新入生歓迎会🍖_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_2025315_迎新新入会員歓迎イベント_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_2025315_迎新新入会員歓迎イベント_260416_2.jpg',
-      '/src/imports/LINE_ALBUM_20240330迎新新入会員歓迎イベント🌳_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_20240330迎新新入会員歓迎イベント🌳_260416_2.jpg',
-      '/src/imports/LINE_ALBUM_20240330迎新新入会員歓迎イベント🌳_260416_3.jpg',
-      '/src/imports/LINE_ALBUM_第13組_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_第16組_260416_1.jpg'
+      images.welcome.bbq,
+      images.welcome.group16
     ]
   },
   {
     id: 'kyoto-cultural-tour',
-    title: { zh: '社課', jp: '社課' },
+    title: { zh: '社課', jp: 'サークルイベント' },
     date: '2024-02-20',
     category: { zh: '文化參訪', jp: '文化訪問' },
     description: {
-      zh: '前往日本古都京都，深度體驗傳統日本文化。行程包括參觀清水寺、金閣寺等知名景點，體驗茶道和和服，以及在祗園漫步感受古都風情。這次旅行不僅是視覺的享受，更是心靈的洗滌，讓大家更深入了解日本傳統文化的精髓。',
-      jp: '日本の古都・京都を訪れ、伝統的な日本文化を深く��験しました。清水寺や金閣寺などの有名な観光スポットを訪問し、茶道や着物を体験し、祇園を散策して古都の雰囲気を感じました。この旅行は視覚的な楽しみだけでなく、心の洗浄でもあり、日本の伝統文化の本質をより深く理解する機会となりました。'
+      zh: '社課是固定舉辦的交流活動,結合文化體驗與互動學習。過去曾舉辦鳳梨酥、綠豆黃、珍珠奶茶等台灣特色美食DIY,也舉辦過台日運動會,透過輕鬆有趣的活動促進彼此交流。',
+      jp: 'サークルイベントは固定的に開催している交流イベントで、文化体験とインタラクティブな学びを組み合わせています。これまでに、パイナップルケーキや緑豆菓子、タピオカなどの台湾スイーツ作り体験や、台日運動会を実施してきました。'
     },
-    coverImage: '/src/imports/LINE_ALBUM_114-1綠豆黃社課サークルイベント_260416_1.jpg',
+    coverImage: images.socialEvent.greenBean,
     gallery: [
-      '/src/imports/LINE_ALBUM_114-1綠豆黃社課サークルイベント_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_114-1綠豆黃社課サークルイベント_260416_2.jpg',
-      '/src/imports/LINE_ALBUM_114-1綠豆黃社課サークルイベント_260416_3.jpg',
-      '/src/imports/LINE_ALBUM_2025419第一次社課_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_2025419第一次社課_260416_2.jpg',
-      '/src/imports/LINE_ALBUM_20231111稻津走訪大稻埕謎解き散策🌾_260416_2.jpg',
-      '/src/imports/LINE_ALBUM_20240420_珍的好好喝！珍珠奶茶DIY體驗タピオカミルクティー手作り体験🧋_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_20240420_珍的好好喝！珍珠奶茶DIY體驗タピオカミルクティー手作り体験🧋_260416_2.jpg',
-      '/src/imports/LINE_ALBUM_20241116_社課-深坑解謎_260416_1.jpg',
-      '/src/imports/LINE_ALBUM_20241116_社課-深坑解謎_260416_2.jpg'
+      images.socialEvent.greenBean,
+      images.socialEvent.first
     ]
   },
   {
     id: 'taiko-performance',
-    title: { zh: '語言交換', jp: '語言交換' },
+    title: { zh: '語言交換', jp: '言語交換' },
     date: '2024-01-10',
     category: { zh: '藝術表演', jp: '芸術パフォーマンス' },
     description: {
-      zh: '邀請專業太鼓表演團隊帶來震撼的演出，並且讓參與者親自體驗打太鼓的樂趣。透過節奏的律動和團隊合作，大家不僅學習了日本傳統樂器，更感受音樂帶來的力量和團結。活動後還有交流時間，讓大家與表演者深入交流。',
-      jp: 'プロの太鼓パフォーマンスチームによる迫力のある演奏を鑑賞し、参加者自身も太鼓を叩く楽しさを体験しました。リズムの律動とチームワークを通じて、日本の伝統楽器を学ぶだけでなく、音楽がもたらす力と団結を感じることができました。イベント後には交流時間も設けられ、パフォーマーと深く交流する機会がありました。'
+      zh: '語言交換是本社舉辦次數最多的活動,每個月固定舉辦多場。活動中,台灣與日本學生同桌交流,並分為中文時間與日文時間,讓雙方都有機會進行口說練習。',
+      jp: '言語交換は本会で最も多く開催されている活動で、毎月複数回実施されています。イベントでは台湾人と日本人が同じテーブルで交流し、中国語タイムと日本語タイムに分けて、お互いに会話練習を行います。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1759352856144-dbd50ca5cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.languageExchange.dec,
     gallery: [
-      'https://images.unsplash.com/photo-1759352856144-dbd50ca5cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1603367433430-c54c447530af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.languageExchange.dec,
+      images.languageExchange.second
     ]
   },
   {
     id: 'temple-visit',
-    title: { zh: '桌遊會', jp: '桌遊会' },
+    title: { zh: '桌遊會', jp: 'ボードゲーム会' },
     date: '2023-12-05',
     category: { zh: '文化參訪', jp: '文化訪問' },
     description: {
-      zh: '參訪東京周邊的傳統寺廟，了解日本佛教文化和建築之美。在導遊的解說下，我們學習了參拜禮儀、抽籤文化，以及廟建築的歷史背景。寧靜的氛圍讓大家暫時遠離都市喧囂，沉浸在日本傳統宗教文化的氛圍中。',
-      jp: '東京周辺の伝統的な寺院を訪問し、日本の仏教文化と建築の美しさについて学びました。ガイドの説明のもと、参拝の礼儀、おみくじ文化、そして寺院建築の歴史的背景を学びました。静かな雰囲気の中で、都会の喧騒から離れ、日本の伝統的な宗教文化に浸ることができました。'
+      zh: '桌遊會是本社每學期固定舉辦多次的活動。在桌遊店內,參與者可以自由挑選喜歡的桌遊,並嘗試用中文或日文向夥伴說明遊戲規則,一起同樂。',
+      jp: 'ボードゲーム会は、本会で毎学期複数回開催している定番のイベントです。ボードゲームカフェで好きなゲームを選び、中国語や日本語でルールを説明しながら一緒に楽しみます。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1769921734987-fbab4b6f235a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.boardGame.first,
     gallery: [
-      'https://images.unsplash.com/photo-1769921734987-fbab4b6f235a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1775113228479-9d7dba75bc12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.boardGame.first,
+      images.boardGame.second
     ]
   },
   {
@@ -94,15 +77,13 @@ export const activities: Activity[] = [
     date: '2023-11-18',
     category: { zh: '語言交流', jp: '言語交換' },
     description: {
-      zh: '在台北市中心舉辦的輕鬆交流聚會，提供台日學生面對面交流的機會。活動包含語言交換、桌遊競賽、以及美食分享。大家在歡笑中學習對方的語言，分享各自國家的趣事，建立深厚的跨國友誼。',
-      jp: '台北市内で開催されたリラックスした交流イベントで、台湾と日本の学生が対面で交流する機会を提供しました。言語交換、ボードゲーム大会、グルメシェアなどが含まれていました。笑顔の中でお互いの言語を学び、それぞれの国の面白い話を共有し、深い国際的な友情を築きました。'
+      zh: '日本學校交流是重要活動之一,透過與日本各校或學生組織合作,促進雙方學生的互動與了解。過去曾與關西大學、日本日美學生會議、廣島なぎさ高等学校等共同舉辦交流活動,透過座談、分組討論與文化分享,深化彼此連結,拓展國際視野。',
+      jp: '日本学校との交流は重要な活動の一つであり、日本の各学校や学生団体との連携を通じて、学生同士の交流と相互理解を深めています。これまでに、関西大学、日本日米学生会議、広島なぎさ高等学校などと共同で交流イベントを開催してきました。ディスカッションやグループ活動、文化共有を通じて、つながりを深め、国際的な視野を広げています。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.schoolExchange.first,
     gallery: [
-      'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1603367433430-c54c447530af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759352856144-dbd50ca5cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.schoolExchange.first,
+      images.schoolExchange.second
     ]
   },
   {
@@ -111,31 +92,28 @@ export const activities: Activity[] = [
     date: '2023-10-22',
     category: { zh: '戶外活動', jp: 'アウトドア' },
     description: {
-      zh: '來到台灣北部的山區進行戶外團隊建設活動。透過登山、野餐、團隊遊戲等活動，增進成員之間的默契和友誼。在大自然的懷抱中，大家放下平日的壓力，享受彼此陪伴的時光，也欣賞台灣美麗的自然風光。',
-      jp: '台湾北部の山岳地帯でアウトドアチームビルディング活動を行いました。登山、ピクニック、チームゲームなどを通じて、メンバー間の連携と友情を深めました。自然の中で、日常のストレスから解放され、お互いの時間を楽しみ、台湾の美しい自然景観を鑑賞しました。'
+      zh: '期末忘年會是每學期期末考結束後舉辦的大型活動,讓大家在學期結束之際一起放鬆與慶祝。活動中會準備餐點與飲品,大家一邊聊天、一邊玩遊戲,在輕鬆歡樂的氛圍中交流互動。就像一場溫馨又熱鬧的派對,為這學期劃下完美句點。',
+      jp: '期末忘年会は、毎学期の期末試験終了後に開催される大型イベントで、学期の締めくくりとしてリラックスしながら皆でお祝いします。食事やドリンクを楽しみながら、会話やゲームで交流を深めることができます。温かく賑やかなパーティーのような雰囲気の中で、学期を締めくくるひとときです。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1603367433430-c54c447530af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.yearEnd.first,
     gallery: [
-      'https://images.unsplash.com/photo-1603367433430-c54c447530af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.yearEnd.first,
+      images.yearEnd.second
     ]
   },
   {
     id: 'cooking-class',
-    title: { zh: '社遊', jp: '社遊' },
+    title: { zh: '社遊', jp: 'サークル旅行' },
     date: '2023-09-15',
     category: { zh: '文化體驗', jp: '文化体験' },
     description: {
-      zh: '由專業日本料理師傅指導的日式料理課程，學習製作壽司、味噌湯等經典日本美食。參與者不僅學會了料理技巧，更深入了解日本飲食文化的精髓。課程結束後，大家一起享用自己親手製作的美味料理，分享烹飪的樂趣與成就感。',
-      jp: 'プロの日本料理シェフによる日本料理教室で、寿司、味噌汁などの定番の日本料理の作り方を学びました。参加者は料理の技術を習得するだけでなく、日本の食文化の本質をより深く理解しました。レッスン後は、自分で作った美味しい料理を一緒に楽しみ、料理の楽しさと達成感を共有しました。'
+      zh: '社遊是戶外交流活動,帶領大家走訪台灣各地,透過實地體驗認識在地文化。過去曾前往宜蘭體驗蔥油餅DIY、參觀林業園區,也到台中高美濕地欣賞夕陽,或在三峽老街體驗客家文化、坪林進行採茶活動。',
+      jp: 'サークル旅行はアウトドア交流イベントで、台湾各地を訪れながら現地の文化を体験します。これまでに、宜蘭でのネギ餅作り体験や林業園区の見学、台中の高美湿地での夕日鑑賞、三峡老街での客家文化体験、坪林での茶摘み体験などを行ってきました。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1719329468433-6737cdef26c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.trip.second,
     gallery: [
-      'https://images.unsplash.com/photo-1719329468433-6737cdef26c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1603367433430-c54c447530af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.trip.second,
+      images.trip.first
     ]
   },
   {
@@ -144,49 +122,43 @@ export const activities: Activity[] = [
     date: '2023-08-10',
     category: { zh: '藝術工作坊', jp: 'アートワークショップ' },
     description: {
-      zh: '傳統日本書道體驗工作坊，由經驗豐富的書道老師帶領大家學習毛筆的握法、運筆技巧，以及漢字與平假名的書寫美學。在靜心揮毫的過程中，參與者感受到日本傳統藝術的魅力，並創作出屬於自己的書法作品作為紀念。',
-      jp: '伝統的な日本の書道体験ワークショップでは、経験豊富な書道の先生が、筆の持ち方、運筆のテクニック、そして漢字とひらがなの書の美学を教えてくれました。心を落ち着けて筆を振るう過程で、参加者は日本の伝統芸術の魅力を感じ、自分だけの書道作品を記念として創作しました。'
+      zh: '分科會是以主題討論為核心的交流活動,參與者分組選擇感興趣的主題,探討台灣與日本之間的差異。透過資料整理與討論後進行報告,不僅能培養表達與思考能力,也能從多元觀點深入理解兩地文化,在交流中激發新的想法。',
+      jp: '分科会はテーマ別ディスカッションを中心とした交流活動で、参加者はグループごとに興味のあるテーマを選び、台湾と日本の違いについ考察します。調査や議論を重ねた後に発表を行い、表現力や思考力を養うとともに、多角的な視点から両国の文化への理解を深めます。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1486303954368-398fea0e72cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.division.first,
     gallery: [
-      'https://images.unsplash.com/photo-1486303954368-398fea0e72cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1769921734987-fbab4b6f235a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1775113228479-9d7dba75bc12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.division.first,
+      images.division.second
     ]
   },
   {
     id: 'cherry-blossom-viewing',
-    title: { zh: '一起食', jp: '一起食' },
+    title: { zh: '一起食', jp: '食事会' },
     date: '2023-04-05',
     category: { zh: '季節活動', jp: '季節イベント' },
     description: {
-      zh: '春天最期待的賞櫻活動！成員們聚集在櫻花樹下，一邊欣賞粉嫩的櫻花，一邊享用精心準備的日式便當和台灣小吃。大家在浪漫的櫻花雨中拍照留念，分享彼此的故事，度過了一個充滿春天氣息的美好午後。',
-      jp: '春に最も楽しみにしていたお花見イベント！メンバーたちが桜の木の下に集まり、淡いピンクの桜を眺めながら、丁寧に用意された日本のお弁当と台湾の軽食を楽しみました。ロマンチッな桜吹雪の中で写真を撮り、お互いの物語を共有し、春の雰囲気に満ちた素晴らしい午後を過ごしました。'
+      zh: '一起食是輕鬆的交流活動,台灣與日本成員分組一同用餐,在自在的氛圍中聊天交流。透過日常對話分享彼此的生活與文化,不僅能練習語言,也能更自然地拉近距離。',
+      jp: '食事会はリラックスした交流イベントで、台湾人と日本人のメンバーがグループに分かれて一緒に食事を楽しみます。気軽な雰囲気の中で会話を交わしながら、お互いの生活や文化を共有します。語学の練習になるだけでなく、自然に距離を縮めることができます。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1775735375198-f50dc78277ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.dining.first,
     gallery: [
-      'https://images.unsplash.com/photo-1775735375198-f50dc78277ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1775113228479-9d7dba75bc12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1769921734987-fbab4b6f235a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.dining.first,
+      images.dining.second
     ]
   },
   {
     id: 'summer-festival',
-    title: { zh: '日本企業講座', jp: '日本企業講座' },
+    title: { zh: '日本企業說明會', jp: '日本就職セミナー' },
     date: '2023-07-20',
     category: { zh: '節慶活動', jp: '祭りイベント' },
     description: {
-      zh: '重現日本傳統夏日祭典的氛圍！成員們穿上浴衣，參加撈金魚、射擊遊戲等經典攤位遊戲，品嚐章魚燒、刨冰等祭典美食。夜晚還有盆舞表演，大家圍成圓圈一起跳舞，體驗最道地的日本夏日風情。',
-      jp: '日本の伝統的な夏祭りの雰囲気を再現！メンバーたちは浴衣を着て、金魚すくい、射的などの定番の屋台ゲームに参加し、たこ焼き、かき氷などの祭りの食べ物を味わいました。夜には盆踊りのパフォーマンスあり、皆で輪になって踊り、最も本場の日本の夏の雰囲気を体験しました。'
+      zh: '日本企業說明會是本社舉辦的重要職涯交流活動,邀請日本企業分享公司業務內容與求職實務知識,並提供求職準備與職涯建議。同時設有Q&A時間,讓學生直接向企業提問。活動對台灣學生與日本留學生皆有助益。過去曾邀請KANAMEL與DISCO等日本企業進行分享。',
+      jp: '日本企業説明会は本会が主催する重要なキャリア交流イベントで、日本企業が事業内容や就職に関する実務知識、就職準備やキャリアアドバイスを紹介します。またQ&A時間も設けられ、学生が直接企業へ質問できます。台湾・日本の学生双方に有益な内容となっており、過去にはKANAMELやDISCOなどの日本企業を招いて開催しました。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1761113031038-f7c7dad3fc69?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.kanamel.first,
     gallery: [
-      'https://images.unsplash.com/photo-1761113031038-f7c7dad3fc69?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759352856144-dbd50ca5cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1775113228479-9d7dba75bc12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.kanamel.first,
+      images.kanamel.second
     ]
   },
   {
@@ -195,32 +167,28 @@ export const activities: Activity[] = [
     date: '2023-06-12',
     category: { zh: '學術交流', jp: '学術交流' },
     description: {
-      zh: '邀請曾在日本留學的學長分享寶貴經驗，包申請流程、獎學金資訊、生活適應等實用資訊。現場設有問答環節，讓有意赴日留學的同學能夠深入了解留生活的真實面貌，並獲得實用的建議和資源。',
-      jp: '日本への留学経験のある先輩たちを招待し、申請プロセス、奨学金情報、生活適応などの貴重な経験を共有してもらいました。Q&Aセッションも設けられ、日本への留学を考えている学生が留学生活の実際の様子を深く理解し、実用的なアドバイスとリソースを得ることができました。'
+      zh: '電影欣賞會是本社的交流活動之一,會包場影廳一起觀賞上映中的日本電影。透過共同觀影與之後的討論分享,讓台灣與日本成員交流彼此對劇情與文化的看法。',
+      jp: '映画鑑賞会は本会の交流イベントの一つで、映画館を貸し切り、上映中の日本映画を一緒に鑑賞します。鑑賞後のディスカッションを通じて、台湾人と日本人のメンバーが作品や文化について意見を共有します。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.movie.april,
     gallery: [
-      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1603367433430-c54c447530af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759299983092-89cf8427dfb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.movie.april,
+      images.movie.heron
     ]
   },
   {
     id: 'year-end-party',
-    title: { zh: '聽力練習會', jp: '聴力練習会' },
+    title: { zh: '聽力練習會', jp: 'リスニング練習会' },
     date: '2023-12-28',
     category: { zh: '聯誼活動', jp: '交流イベント' },
     description: {
-      zh: '一年的尾聲，全體成員齊聚一堂慶祝這一年的美好回憶。活動包含精彩的才藝表演、年度回顧影片、抽獎活動，以及豐盛的晚宴。大家互相感謝這一年的陪伴與支持，並期待來年能繼續攜手創造更多美好時光。',
-      jp: '一年の締めくくりに、全メンバーが集まってこの一年の素晴らしい思い出を祝いました。イベントには、素晴らしいタレントショー、年間レビュービデオ、抽選会、そして豪華なディナーが含まれていました。皆でこの一年の付き合いとサポートに感謝し、来年もまた一緒に素晴らしい時間を作ることを楽しみにしています。'
+      zh: '聽力練習會依照參與者的語言程度分組,使用不同難度的聽力教材。台灣與日本成員兩人一組,互相為對方準備JLPT與TOCFL相關內容,進行提問與說明練習。透過實際互動提升聽解與口語表達能力。',
+      jp: 'リスニング練習会は参加者の語学レベルに応じてグループ分けを行い、難易度の異なるリスニング教材を使用します。台湾人と日本人がペアになり、TOCFLやJLPTに関連する内容について互いに問題を出し合い、説明を行う練習をします。実際のやり取りを通じて、聴解力と口頭表現力の向上を目指します。'
     },
-    coverImage: 'https://images.unsplash.com/photo-1758844899075-22da04c382aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    coverImage: images.listening.first,
     gallery: [
-      'https://images.unsplash.com/photo-1758844899075-22da04c382aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1759352856144-dbd50ca5cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1603367433430-c54c447530af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1718590812265-74cb241c5bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+      images.listening.first,
+      images.listening.second
     ]
   }
 ];
